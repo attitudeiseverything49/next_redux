@@ -1,15 +1,11 @@
 'use client';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchTodos } from '../redux/action/todoAction';
+import { useEffect } from 'react';;
 import { fetchRecipes } from '@/redux/action/recipeAction';
 
 const TodoList = () => {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.recipes.recipes);
-
-  console.log('todos',todos);
-
+  const recipes = useSelector((state) => state.recipes.recipes);
 
   useEffect(() => {
     dispatch(fetchRecipes());
@@ -17,10 +13,10 @@ const TodoList = () => {
 
   return (
     <div>
-      <h1>Todos</h1>
+      <h1>Recipes</h1>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.name}</li>
+        {recipes.map((recipe) => (
+          <li key={recipe.id}>{recipe.name}</li>
         ))}
       </ul>
     </div>
